@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angel Simcha - Product Builder | Founder | Vision Operator</title>
+    
+    <style>
+        /* === RESET === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* === GLOBAL STYLES === */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Arial, sans-serif;
+            line-height: 1.6;
+            color: #000000;
+            background-color: #FFFFFF;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* === HEADER / NAVIGATION === */
+        header {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        /* === HERO SECTION === */
+        .hero {
+            padding: 80px 20px 120px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 10vw, 96px);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+        }
+
+        .hero .tagline {
+            font-size: clamp(18px, 3vw, 24px);
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #000;
+            color: #fff;
+            padding: 16px 40px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        /* === ABOUT SECTION === */
+        .about {
+            padding: 60px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 30px;
+            border: 4px solid #f0f0f0;
+        }
+
+        .about p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        /* === WHAT I DO SECTION === */
+        .what-i-do {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            color: #666;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            padding: 30px;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+
+        .service-card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* === PROJECTS SECTION === */
+        .projects {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #fafafa;
+        }
+
+        .project-item {
+            padding: 40px;
+            margin-bottom: 30px;
+            background-color: #fff;
+            border-radius: 12px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .project-item h3 {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .project-year {
+            color: #999;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+
+        .project-item p {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* === ZOE COMMUNITY SECTION === */
+        .zoe-section {
+            padding: 80px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .zoe-section h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .zoe-section p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .zoe-button {
+            display: inline-block;
+            background-color: #000;
+            color: #fff;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            margin-top: 20px;
+        }
+
+        /* === FOOTER === */
+        footer {
+            padding: 60px 20px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .footer-section {
+            margin-bottom: 40px;
+        }
+
+        .footer-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            color: #666;
+            transition: color 0.2s;
+        }
+
+        .social-links a:hover {
+            color: #000;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links a {
+            color: #666;
+            font-size: 16px;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #000;
+        }
+
+        .copyright {
+            text-align: center;
+            color: #999;
+            font-size: 14px;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        /* === MOBILE RESPONSIVE === */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 20px 80px;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .social-links {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER / NAVIGATION -->
+    <header>
+        <div class="logo">Angel Simcha</div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <h1>Angel Simcha.</h1>
+        <p class="tagline">Product Builder | Founder | Vision Operator</p>
+        <a href="https://linkedin.com/in/angel-simcha" target="_blank" class="cta-button">Get in Touch</a>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="about">
+        <!-- 
+        UNCOMMENT THIS SECTION WHEN YOU HAVE YOUR PHOTO:
+        Replace YOUR-IMAGE-URL with your actual image link (from Imgur or GitHub)
+        
+        <img src="YOUR-IMAGE-URL" alt="Angel Simcha" class="about-image">
+        -->
+        
+        <p>I build ideas into products and systems that actually work. I move between vision and execution with ease — founding, managing, and scaling projects across tech, education, and operations. What drives me is watching a raw concept turn into something people use, feel, or build with.</p>
+    </section>
+
+    <!-- WHAT I DO SECTION -->
+    <section class="what-i-do">
+        <h2 class="section-title">What I Do</h2>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Product Building & Launch Systems</h3>
+                <p>I take ideas from brainwave to live product — building the structure, team flow, and execution path that gets it into the world.</p>
+            </div>
+
+            <div class="service-card">
+                <h3>Vision Operations & Execution</h3>
+                <p>I translate big vision into practical steps, manage moving parts, and build the systems that make businesses run without chaos.</p>
+            </div>
+
+            <div class="service-card">
+                <h3>Community & Learning Design</h3>
+                <p>I create learning experiences, digital campuses, and startup-style environments where people grow, build, and collaborate.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section class="projects">
+        <h2 class="section-title">Projects</h2>
+
+        <div class="project-item">
+            <h3>Hammet Labs</h3>
+            <div class="project-year">2025–Present</div>
+            <p>An AI-powered platform designing personalized tech-learning experiences for young Africans — from concept to product build.</p>
+        </div>
+
+        <div class="project-item">
+            <h3>Konoha University</h3>
+            <div class="project-year">2023–Present</div>
+            <p>A digital campus and community shaping the next generation of capitalists through practical learning, systems, and leadership pathways.</p>
+        </div>
+
+        <div class="project-item">
+            <h3>The Zoe Inc</h3>
+            <div class="project-year">2025–Present</div>
+            <p>A product and book venture building publishing systems, content teams, and creative operations for young storytellers and entrepreneurs.</p>
+        </div>
+
+        <div class="project-item">
+            <h3>Witty Inc</h3>
+            <div class="project-year">2025–Present</div>
+            <p>Execution support and project operations across digital products, community initiatives, and team structuring.</p>
+        </div>
+    </section>
+
+    <!-- ZOE COMMUNITY SECTION -->
+    <section class="zoe-section">
+        <h2>Join ZOE</h2>
+        <p>I'm the founder of ZOE: a growing community for people who want to live on purpose, grow wisely, and build boldly.</p>
+        <p>ZOE is home for those who want more, but want it with intention. We host free sessions, write together, learn together, and grow in community.</p>
+        <p>If that sounds like your kind of space, you're welcome in.</p>
+        <a href="https://t.me/ZoeAbode" target="_blank" class="zoe-button">Join the Community →</a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-section">
+            <h3 class="footer-title">Follow along</h3>
+            <div class="social-links">
+                <a href="https://linkedin.com/in/angel-simcha" target="_blank">LinkedIn</a>
+                <a href="https://instagram.com/theangelsimcha" target="_blank">Instagram</a>
+                <a href="https://x.com/theangelsimcha" target="_blank">Twitter</a>
+                <a href="https://github.com/Chiagoziem-Angel" target="_blank">GitHub</a>
+            </div>
+        </div>
+
+        <div class="footer-section">
+            <h3 class="footer-title">Resources & Communities</h3>
+            <div class="footer-links">
+                <a href="https://whatsapp.com/channel/0029Vb6EjozDp2Q3jPYFgu0X" target="_blank">The Operators Corner (WhatsApp Channel)</a>
+                <a href="https://selar.com/m/angelsimcha" target="_blank">Store</a>
+                <a href="https://wa.me/c/2348165649262" target="_blank">Bookstore</a>
+                <a href="https://t.me/ZoeAbode" target="_blank">ZOE Community</a>
+            </div>
+        </div>
+
+        <div class="footer-section">
+            <h3 class="footer-title">Get in Touch</h3>
+            <p style="color: #666;">angelsimcha@gmail.com</p>
+        </div>
+
+        <div class="copyright">
+            © 2025 Angel Simcha. Built with intention.
+        </div>
+    </footer>
+
+</body>
+</html>
