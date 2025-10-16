@@ -188,6 +188,18 @@
             text-decoration: underline; /* or leave blank*/
         }
 
+        .animate-card {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.6s ease-out;
+        }
+
+       .animate-card.show {
+    opacity: 1;
+    transform: translateX(0);
+       }
+    
+
         /* === ZOE COMMUNITY SECTION === */
         .zoe-section {
             padding: 80px 20px;
@@ -326,18 +338,18 @@
     <section class="what-i-do">
         <h2 class="section-title">What I Do</h2>
         
-        <div class="services-grid">
+        <div class="services-grid animate-card">
             <div class="service-card">
                 <h3>Product Building & Launch Systems</h3>
                 <p>I take ideas from brainwave to live product — building the structure, team flow, and execution path that gets it into the world.</p>
             </div>
 
-            <div class="service-card">
+            <div class="service-card animate-card">
                 <h3>Vision Operations & Execution</h3>
                 <p>I translate big vision into practical steps, manage moving parts, and build the systems that make businesses run without chaos.</p>
             </div>
 
-            <div class="service-card">
+            <div class="service-card animate-card">
                 <h3>Community & Learning Design</h3>
                 <p>I create learning experiences, digital campuses, and startup-style environments where people grow, build, and collaborate.</p>
             </div>
@@ -348,7 +360,7 @@
     <section class="projects">
         <h2 class="section-title">My Projects</h2>
 
-        <div class="project-item">
+        <div class="project-item animate-card">
             <h3><u>
                 <a href= "https://Instagram.com/hammetlabs" target="_blank">Hammet Labs</a></u>
             </h3>
@@ -357,7 +369,7 @@
             <p><b><u>P.S. We are <a href="https://blog.hammetlabs.com/dev" target="_blank">Hiring!</a></u></b></p>
         </div>
 
-        <div class="project-item">
+        <div class="project-item animate-card">
             <h3><u>
                 <a href= "https://x.com/konohahq" target = "_blank">Konoha University</a></u>
             </h3>
@@ -365,7 +377,7 @@
             <p>A digital campus and community shaping the next generation of capitalists through practical learning, systems, and leadership pathways.</p>
             </div>
 
-        <div class="project-item">
+        <div class="project-item animate-card">
             <h3><u>
                 <a href= "https://instagram.com/thezoeinc" target = "_blank">The Zoe Inc</a></u>
             </h3>
@@ -373,7 +385,7 @@
             <p>A productivity and wholeness brand helping people live intentionally. Its first subdivision is an online bookstore, with more branches launching soon.</p>
         </div>
 
-        <div class="project-item">
+        <div class="project-item animate-card">
             <h3>Witty Inc</h3>
             <div class="project-year">Managing Partner, 2025–Present</div>
             <p>Execution support and project operations across digital products, community initiatives, agricultural investments and team structuring.</p>
@@ -431,6 +443,20 @@
             © 2025 Angel Simcha. Built with intention.
         </div>
     </footer>
+
+    <script>
+  const cards = document.querySelectorAll('.animate-card');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      }
+    });
+  }, { threshold: 0.2 });
+
+  cards.forEach(card => observer.observe(card));
+    </script>
 
 </body>
 </html>
