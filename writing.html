@@ -26,7 +26,7 @@
     <p class="label">Writing</p>
     <h1>Ideas, essays<br>& dispatches.</h1>
     <p style="margin-top: 20px; font-size: 1.05rem; max-width: 520px;">
-      I write about operations, leadership, building in Africa, and the systems behind how we live and work.
+      I write about operations, leadership, AI, building in Africa and the systems behind how we live and work.
     </p>
   </div>
 </section>
@@ -37,13 +37,13 @@
   <div class="container">
     <p class="label">Newsletter</p>
 
-    <div class="card">
+    <div class="card animate-card">
       <span class="badge">LinkedIn Newsletter · 640+ Subscribers</span>
       <h2>The Productive Operator</h2>
       <p class="card-meta">Weekly — LinkedIn Newsletter</p>
       <p>
-        Execution frameworks, operational clarity, and leadership systems for people who carry real weight.
-        Published weekly on LinkedIn. Not productivity hacks — real systems from real building.
+        Execution frameworks, operational clarity and leadership systems for people who carry real weight.
+        Published weekly on LinkedIn. Not productivity hacks but real systems from real building.
       </p>
       <br />
       <!-- Replace href with your actual LinkedIn newsletter URL -->
@@ -66,13 +66,13 @@
       Replace the title, date, description, and href link.
     -->
 
-    <div class="card">
+    <div class="card animate-card">
       <h3><a href="#" target="_blank">Essay title goes here</a></h3>
       <p class="card-meta">Month Year · Est. read time</p>
       <p>One or two sentences describing what this essay is about and why it matters.</p>
     </div>
 
-    <div class="card">
+    <div class="card animate-card">
       <h3><a href="#" target="_blank">Essay title goes here</a></h3>
       <p class="card-meta">Month Year · Est. read time</p>
       <p>One or two sentences describing what this essay is about and why it matters.</p>
@@ -95,7 +95,7 @@
       These can link to your Kit posts or future self-hosted posts.
     -->
 
-    <div class="card">
+    <div class="card animate-card">
       <h3><a href="#" target="_blank">Blog post title goes here</a></h3>
       <p class="card-meta">Month Year</p>
       <p>One sentence on what this post covers.</p>
@@ -110,5 +110,15 @@
   © 2025 Angel Simcha. Built with intention.
 </footer>
 
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('show');
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.animate-card').forEach(el => observer.observe(el));
+</script>
+  
 </body>
 </html>
