@@ -1,0 +1,225 @@
+/* ─── TOKENS ─── */
+:root {
+  --accent: #C9A227;
+  --black: #111111;
+  --gray: #6b6b6b;
+  --light: #f5f5f5;
+  --border: #e0e0e0;
+  --white: #ffffff;
+  --max: 680px;
+  --radius: 16px;
+}
+
+/* ─── RESET ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', Georgia, sans-serif;
+  background: var(--white);
+  color: var(--black);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+}
+
+nav .logo {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--black);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+
+nav .logo span { color: var(--accent); }
+
+nav ul {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+}
+
+nav ul a {
+  text-decoration: none;
+  font-size: 0.875rem;
+  color: var(--gray);
+  font-weight: 500;
+  transition: color 0.2s;
+  letter-spacing: 0.01em;
+}
+
+nav ul a:hover,
+nav ul a.active { color: var(--accent); }
+
+/* ─── LAYOUT ─── */
+.container {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+section { padding: 72px 0; }
+
+/* ─── SECTION LABEL ─── */
+.label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 32px;
+}
+
+/* ─── HEADINGS ─── */
+h1 {
+  font-size: clamp(2.2rem, 8vw, 3.2rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--black);
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--black);
+  margin-bottom: 8px;
+}
+
+h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--black);
+  margin-bottom: 6px;
+}
+
+p { color: var(--gray); font-size: 1rem; }
+
+/* ─── CARD ─── */
+.card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  margin-bottom: 20px;
+  background: var(--white);
+  transition: border-color 0.2s;
+}
+
+.card:hover { border-color: var(--accent); }
+
+.card a { text-decoration: underline; color: var(--black); }
+
+.card-meta {
+  font-size: 0.8rem;
+  color: var(--gray);
+  margin-bottom: 12px;
+}
+
+/* ─── BADGE ─── */
+.badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 100px;
+  padding: 3px 10px;
+  margin-bottom: 10px;
+}
+
+/* ─── BUTTON ─── */
+.btn {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--white);
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 14px 28px;
+  border-radius: 10px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  letter-spacing: 0.01em;
+}
+
+.btn:hover { opacity: 0.85; }
+
+.btn-outline {
+  background: transparent;
+  color: var(--black);
+  border: 1.5px solid var(--black);
+}
+
+.btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ─── DIVIDER ─── */
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 0;
+}
+
+/* ─── FOOTER ─── */
+footer {
+  padding: 40px 24px;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--gray);
+  border-top: 1px solid var(--border);
+}
+
+/* ─── FORM ─── */
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--black);
+  margin-bottom: 8px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: inherit;
+  color: var(--black);
+  background: var(--white);
+  transition: border-color 0.2s;
+  outline: none;
+  resize: vertical;
+}
+
+input:focus, textarea:focus { border-color: var(--accent); }
+
+/* ─── MOBILE ─── */
+@media (max-width: 600px) {
+  nav ul { gap: 18px; }
+  nav ul a { font-size: 0.8rem; }
+  section { padding: 56px 0; }
+}
