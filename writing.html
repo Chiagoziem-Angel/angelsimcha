@@ -28,6 +28,28 @@
     #essay-list .essay-card .excerpt {
       font-size: 0.95rem;
     }
+
+    /* Blog cards — same style as essay cards */
+    #blog-list .blog-card {
+      margin-bottom: 20px;
+    }
+    #blog-list .blog-card a {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    #blog-list .blog-card h3 {
+      text-decoration: underline;
+      margin-bottom: 4px;
+    }
+    #blog-list .blog-card .meta {
+      font-size: 0.85rem;
+      color: #999;
+      margin-bottom: 6px;
+    }
+    #blog-list .blog-card .excerpt {
+      font-size: 0.95rem;
+    }
   </style>
 </head>
 <body>
@@ -90,12 +112,11 @@
   <div class="container">
     <p class="label">Blog</p>
     <p style="margin-bottom: 32px;">Shorter notes, field dispatches, and thinking-in-progress.</p>
-
-    <div class="card animate-card">
-      <h3><a href="#" target="_blank">Blog post title goes here</a></h3>
-      <p class="card-meta">Month Year</p>
-      <p>One sentence on what this post covers.</p>
+    <div id="blog-list">
+      <p style="color: #999; font-size: 0.9rem;">Loading letters...</p>
     </div>
+    <br />
+    <a href="https://blog.angelsimcha.com" target="_blank" class="btn">See all letters →</a>
   </div>
 </section>
 
@@ -104,7 +125,7 @@
 </footer>
 
 <script>
-  // Animate cards on scroll
+  // ── Animate cards on scroll ────────────────────────────
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) entry.target.classList.add('show');
@@ -112,31 +133,31 @@
   }, { threshold: 0.1 });
   document.querySelectorAll('.animate-card').forEach(el => observer.observe(el));
 
-  // Pull essays from Sanity
-  const PROJECT_ID = 'ck8qyryn'
+  // ── Pull essays from Sanity ────────────────────────────
+  const PROJECT_ID = 'ck8qyryn';
   const QUERY = encodeURIComponent(
     `*[_type == "essay"] | order(publishedAt desc) {
       title, "slug": slug.current, publishedAt, excerpt, readTime, externalUrl, category
     }`
-  )
+  );
 
   fetch(`https://${PROJECT_ID}.api.sanity.io/v2024-01-01/data/query/production?query=${QUERY}`)
     .then(res => res.json())
     .then(({ result }) => {
-      const container = document.getElementById('essay-list')
+      const container = document.getElementById('essay-list');
       if (!result || !result.length) {
-        container.innerHTML = '<p style="color:#999;">No essays published yet.</p>'
-        return
+        container.innerHTML = '<p style="color:#999;">No essays published yet.</p>';
+        return;
       }
       container.innerHTML = result.map(essay => {
         const date = essay.publishedAt
           ? new Date(essay.publishedAt).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
-          : ''
-        const readTime = essay.readTime ? ` · ${essay.readTime} min read` : ''
+          : '';
+        const readTime = essay.readTime ? ` · ${essay.readTime} min read` : '';
         const href = essay.externalUrl
           ? essay.externalUrl
-          : `https://essay.angelsimcha.com/essays/${essay.slug}`
-        const targetAttr = essay.externalUrl ? 'target="_blank" rel="noopener noreferrer"' : ''
+          : `https://essay.angelsimcha.com/essays/${essay.slug}`;
+        const targetAttr = essay.externalUrl ? 'target="_blank" rel="noopener noreferrer"' : '';
 
         return `
           <div class="card animate-card essay-card">
@@ -146,16 +167,68 @@
               <p class="excerpt">${essay.excerpt || ''}</p>
             </a>
           </div>
-        `
-      }).join('')
+        `;
+      }).join('');
 
-      // Observe newly added cards
       document.querySelectorAll('.animate-card').forEach(el => observer.observe(el));
     })
     .catch(() => {
       document.getElementById('essay-list').innerHTML =
-        '<p style="color:#999;">Could not load essays.</p>'
+        '<p style="color:#999;">Could not load essays.</p>';
+    });
+
+  // ── Pull letters from blog.angelsimcha.com ─────────────
+  fetch('https://blog.angelsimcha.com/api/get-letters')
+    .then(res => res.json())
+    .then(data => {
+      const container = document.getElementById('blog-list');
+      const broadcasts = data.broadcasts || [];
+
+      if (!broadcasts.length) {
+        container.innerHTML = '<p style="color:#999;">No letters published yet.</p>';
+        return;
+      }
+
+      // Show only the 3 most recent
+      container.innerHTML = broadcasts.slice(0, 3).map(b => {
+        const date = b.published_at || b.created_at
+          ? new Date(b.published_at || b.created_at).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
+          : '';
+        const title = b.subject || 'Untitled Letter';
+        const excerpt = stripHtml(b.description || b.content || '').slice(0, 120);
+        const url = `https://blog.angelsimcha.com/letter.html?id=${b.id}`;
+
+        return `
+          <div class="card animate-card blog-card">
+            <a href="${url}" target="_blank" rel="noopener noreferrer">
+              <h3>${escapeHtml(title)} ↗</h3>
+              <p class="meta">${date}</p>
+              ${excerpt ? `<p class="excerpt">${escapeHtml(excerpt)}…</p>` : ''}
+            </a>
+          </div>
+        `;
+      }).join('');
+
+      document.querySelectorAll('.animate-card').forEach(el => observer.observe(el));
     })
+    .catch(() => {
+      document.getElementById('blog-list').innerHTML =
+        '<p style="color:#999;">Could not load letters.</p>';
+    });
+
+  function stripHtml(html) {
+    const tmp = document.createElement('div');
+    tmp.innerHTML = html;
+    return tmp.textContent || tmp.innerText || '';
+  }
+
+  function escapeHtml(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
 </script>
 
 </body>
