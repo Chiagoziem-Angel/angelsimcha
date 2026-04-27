@@ -7,6 +7,28 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <style>
+    #essay-list .essay-card {
+      margin-bottom: 20px;
+    }
+    #essay-list .essay-card a {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    #essay-list .essay-card h3 {
+      text-decoration: underline;
+      margin-bottom: 4px;
+    }
+    #essay-list .essay-card .meta {
+      font-size: 0.85rem;
+      color: #999;
+      margin-bottom: 6px;
+    }
+    #essay-list .essay-card .excerpt {
+      font-size: 0.95rem;
+    }
+  </style>
 </head>
 <body>
 
@@ -36,7 +58,6 @@
 <section>
   <div class="container">
     <p class="label">Newsletter</p>
-
     <div class="card animate-card">
       <span class="badge">LinkedIn Newsletter · 640+ Subscribers</span>
       <h2>The Productive Operator</h2>
@@ -46,10 +67,8 @@
         Published weekly on LinkedIn. Not productivity hacks but real systems from real building.
       </p>
       <br />
-      <!-- Replace href with your actual LinkedIn newsletter URL -->
       <a href="https://www.linkedin.com/newsletters/the-productive-operator" target="_blank" class="btn">Read on LinkedIn</a>
     </div>
-
   </div>
 </section>
 
@@ -59,27 +78,9 @@
   <div class="container">
     <p class="label">Essays</p>
     <p style="margin-bottom: 32px;">Long-form thinking on things that matter.</p>
-
-    <!--
-      ADD YOUR ESSAYS HERE.
-      Copy and paste the card block below for each essay.
-      Replace the title, date, description, and href link.
-    -->
-
-    <div class="card animate-card">
-      <h3><a href="#" target="_blank">Essay title goes here</a></h3>
-      <p class="card-meta">Month Year · Est. read time</p>
-      <p>One or two sentences describing what this essay is about and why it matters.</p>
+    <div id="essay-list">
+      <p style="color: #999; font-size: 0.9rem;">Loading essays...</p>
     </div>
-
-    <div class="card animate-card">
-      <h3><a href="#" target="_blank">Essay title goes here</a></h3>
-      <p class="card-meta">Month Year · Est. read time</p>
-      <p>One or two sentences describing what this essay is about and why it matters.</p>
-    </div>
-
-    <!-- Add more cards above this line -->
-
   </div>
 </section>
 
@@ -90,19 +91,11 @@
     <p class="label">Blog</p>
     <p style="margin-bottom: 32px;">Shorter notes, field dispatches, and thinking-in-progress.</p>
 
-    <!--
-      ADD YOUR BLOG POSTS HERE.
-      These can link to your Kit posts or future self-hosted posts.
-    -->
-
     <div class="card animate-card">
       <h3><a href="#" target="_blank">Blog post title goes here</a></h3>
       <p class="card-meta">Month Year</p>
       <p>One sentence on what this post covers.</p>
     </div>
-
-    <!-- Add more blog post cards above this line -->
-
   </div>
 </section>
 
@@ -111,14 +104,59 @@
 </footer>
 
 <script>
+  // Animate cards on scroll
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) entry.target.classList.add('show');
     });
   }, { threshold: 0.1 });
-
   document.querySelectorAll('.animate-card').forEach(el => observer.observe(el));
+
+  // Pull essays from Sanity
+  const PROJECT_ID = 'ck8qyryn'
+  const QUERY = encodeURIComponent(
+    `*[_type == "essay"] | order(publishedAt desc) {
+      title, "slug": slug.current, publishedAt, excerpt, readTime, externalUrl, category
+    }`
+  )
+
+  fetch(`https://${PROJECT_ID}.api.sanity.io/v2024-01-01/data/query/production?query=${QUERY}`)
+    .then(res => res.json())
+    .then(({ result }) => {
+      const container = document.getElementById('essay-list')
+      if (!result || !result.length) {
+        container.innerHTML = '<p style="color:#999;">No essays published yet.</p>'
+        return
+      }
+      container.innerHTML = result.map(essay => {
+        const date = essay.publishedAt
+          ? new Date(essay.publishedAt).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
+          : ''
+        const readTime = essay.readTime ? ` · ${essay.readTime} min read` : ''
+        const href = essay.externalUrl
+          ? essay.externalUrl
+          : `https://essay.angelsimcha.com/essays/${essay.slug}`
+        const targetAttr = essay.externalUrl ? 'target="_blank" rel="noopener noreferrer"' : ''
+
+        return `
+          <div class="card animate-card essay-card">
+            <a href="${href}" ${targetAttr}>
+              <h3>${essay.title}${essay.externalUrl ? ' ↗' : ''}</h3>
+              <p class="meta">${date}${readTime}</p>
+              <p class="excerpt">${essay.excerpt || ''}</p>
+            </a>
+          </div>
+        `
+      }).join('')
+
+      // Observe newly added cards
+      document.querySelectorAll('.animate-card').forEach(el => observer.observe(el));
+    })
+    .catch(() => {
+      document.getElementById('essay-list').innerHTML =
+        '<p style="color:#999;">Could not load essays.</p>'
+    })
 </script>
-  
+
 </body>
 </html>
