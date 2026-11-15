@@ -50,3 +50,7 @@ Until a file is added, the card shows the name as text, so nothing breaks.
 
 Also add these when you have them (each card falls back to a letter tile until then):
 `kingdom-pathways.png`, `daniel-nation.png`, `eliora.png` (square, about 256px or larger).
+
+## Clean URLs
+
+`vercel.json` turns on clean URLs, so angelsimcha.com/work.html opens as angelsimcha.com/work and index.html redirects to the bare domain. This only applies on Vercel. When you preview locally by opening files, you will still see .html.
