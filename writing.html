@@ -1,235 +1,157 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Writing — Angel Simcha</title>
+  <title>Writing | Angel Simcha</title>
+  <meta name="description" content="Essays, letters and free resources from Angel Simcha on operations, leadership, AI and building in Africa." />
+  <link rel="canonical" href="https://angelsimcha.com/writing.html" />
+  <meta property="og:title" content="Writing | Angel Simcha" />
+  <meta property="og:description" content="Essays, letters and resources on operations, leadership and AI." />
+  <meta property="og:image" content="https://angelsimcha.com/images/angel-portrait.jpg" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <style>
-    #essay-list .essay-card {
-      margin-bottom: 20px;
-    }
-    #essay-list .essay-card a {
-      text-decoration: none;
-      color: inherit;
-      display: block;
-    }
-    #essay-list .essay-card h3 {
-      text-decoration: underline;
-      margin-bottom: 4px;
-    }
-    #essay-list .essay-card .meta {
-      font-size: 0.85rem;
-      color: #999;
-      margin-bottom: 6px;
-    }
-    #essay-list .essay-card .excerpt {
-      font-size: 0.95rem;
-    }
-
-    /* Blog cards — same style as essay cards */
-    #blog-list .blog-card {
-      margin-bottom: 20px;
-    }
-    #blog-list .blog-card a {
-      text-decoration: none;
-      color: inherit;
-      display: block;
-    }
-    #blog-list .blog-card h3 {
-      text-decoration: underline;
-      margin-bottom: 4px;
-    }
-    #blog-list .blog-card .meta {
-      font-size: 0.85rem;
-      color: #999;
-      margin-bottom: 6px;
-    }
-    #blog-list .blog-card .excerpt {
-      font-size: 0.95rem;
-    }
+    .post-card a { display: block; }
+    .post-card h3 { border-bottom: 2px solid var(--gold); display: inline; }
+    .post-card .meta { margin: 10px 0 6px; color: var(--gray); font-weight: 500; }
+    .post-card .excerpt { font-size: 0.97rem; }
+    .muted { color: var(--gray); font-size: 0.95rem; }
   </style>
+  <script>document.documentElement.classList.remove('no-js');</script>
 </head>
 <body>
+<header id="site-nav"></header>
 
-<nav>
-  <a href="index.html" class="logo">Angel<span>.</span></a>
-  <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="work.html">Work</a></li>
-    <li><a href="writing.html" class="active">Writing</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
-</nav>
-
-<section>
-  <div class="container">
-    <p class="label">Writing</p>
-    <h1>Ideas, essays<br>& dispatches.</h1>
-    <p style="margin-top: 20px; font-size: 1.05rem; max-width: 520px;">
-      I write about operations, leadership, AI, building in Africa and the systems behind how we live and work.
-    </p>
+<section class="page-head">
+  <div class="wrap">
+    <span class="kicker">Writing</span>
+    <h1>Ideas, essays and dispatches.</h1>
+    <p>I write about operations, leadership, AI, building in Africa and the systems behind how we live and work.</p>
   </div>
 </section>
 
-<hr />
-
+<!-- NEWSLETTER -->
 <section>
-  <div class="container">
-    <p class="label">Newsletter</p>
-    <div class="card animate-card">
-      <span class="badge">LinkedIn Newsletter · 640+ Subscribers</span>
-      <h2>The Productive Operator</h2>
-      <p class="card-meta">Weekly — LinkedIn Newsletter</p>
-      <p>
-        Execution frameworks, operational clarity and leadership systems for people who carry real weight.
-        Published weekly on LinkedIn. Not productivity hacks but real systems from real building.
-      </p>
-      <br />
-      <a href="https://www.linkedin.com/newsletters/the-productive-operator" target="_blank" class="btn">Read on LinkedIn</a>
+  <div class="wrap">
+    <div class="card reveal" style="background:var(--indigo); border:0; display:grid; grid-template-columns:1.4fr 1fr; gap:32px; align-items:center;">
+      <div>
+        <span class="tag gold">LinkedIn newsletter</span>
+        <h2 style="color:var(--white); margin-top:6px;">The Productive Operator</h2>
+        <p style="color:#D9D3F5;">Execution frameworks, operational clarity and leadership systems for people who carry real weight. Not productivity hacks, but real systems from real building.</p>
+      </div>
+      <div style="text-align:left;">
+        <a href="https://www.linkedin.com/newsletters/the-productive-operator" target="_blank" rel="noopener" class="btn btn-gold">Read on LinkedIn</a>
+      </div>
     </div>
   </div>
 </section>
 
-<hr />
+<!-- ESSAYS -->
+<section class="band-lav">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Essays</span>
+      <h2>Long-form thinking on things that matter.</h2>
+    </div>
+    <div class="grid-2" id="essay-list"><p class="muted">Loading essays...</p></div>
+  </div>
+</section>
 
+<!-- BLOG -->
 <section>
-  <div class="container">
-    <p class="label">Essays</p>
-    <p style="margin-bottom: 32px;">Long-form thinking on things that matter.</p>
-    <div id="essay-list">
-      <p style="color: #999; font-size: 0.9rem;">Loading essays...</p>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Letters</span>
+      <h2>Shorter notes and thinking in progress.</h2>
+    </div>
+    <div class="grid-3" id="blog-list"><p class="muted">Loading letters...</p></div>
+    <div style="margin-top:32px;"><a href="https://blog.angelsimcha.com" target="_blank" rel="noopener" class="btn btn-outline">See all letters</a></div>
+  </div>
+</section>
+
+<!-- FREE RESOURCES -->
+<section class="band-lav">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Resources</span>
+      <h2>Guides and kits you can use today.</h2>
+    </div>
+    <div class="grid-3">
+      <div class="card reveal"><span class="tag gold">Free</span><h3>Product and Operations Starter Kit</h3><p>A companion kit to my talk "From Ideas to Execution".</p><a class="link-arrow" href="https://selar.com/m/angelsimcha" target="_blank" rel="noopener">Get it on Selar</a></div>
+      <div class="card reveal" style="--d:80ms"><span class="tag gold">Free</span><h3>The Operator's Field Guide</h3><p>A short guide built around the OPERATE&trade; framework for operator-leadership.</p><a class="link-arrow" href="https://selar.com/m/angelsimcha" target="_blank" rel="noopener">Get it on Selar</a></div>
+      <div class="card reveal" style="--d:160ms"><span class="tag">Ebook</span><h3>80 Ways to Use AI at Work Beyond Writing Emails</h3><p>Practical ways to use AI across the working day.</p><a class="link-arrow" href="https://selar.com/m/angelsimcha" target="_blank" rel="noopener">Get it on Selar</a></div>
     </div>
   </div>
 </section>
 
-<hr />
-
-<section>
-  <div class="container">
-    <p class="label">Blog</p>
-    <p style="margin-bottom: 32px;">Shorter notes, field dispatches, and thinking-in-progress.</p>
-    <div id="blog-list">
-      <p style="color: #999; font-size: 0.9rem;">Loading letters...</p>
-    </div>
-    <br />
-    <a href="https://blog.angelsimcha.com" target="_blank" class="btn">See all letters →</a>
-  </div>
-</section>
-
-<footer>
-  © 2025 Angel Simcha. Built with intention.
-</footer>
-
+<footer id="site-footer"></footer>
+<script src="gallery-data.js"></script>
+<script src="site.js"></script>
 <script>
-  // ── Animate cards on scroll ────────────────────────────
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('show');
-    });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.animate-card').forEach(el => observer.observe(el));
-
-  // ── Pull essays from Sanity ────────────────────────────
-  const PROJECT_ID = 'ck8qyryn';
-  const QUERY = encodeURIComponent(
-    `*[_type == "essay"] | order(publishedAt desc) {
-      title, "slug": slug.current, publishedAt, excerpt, readTime, externalUrl, category
-    }`
-  );
-
-  fetch(`https://${PROJECT_ID}.api.sanity.io/v2024-01-01/data/query/production?query=${QUERY}`)
-    .then(res => res.json())
-    .then(({ result }) => {
-      const container = document.getElementById('essay-list');
-      if (!result || !result.length) {
-        container.innerHTML = '<p style="color:#999;">No essays published yet.</p>';
-        return;
-      }
-      container.innerHTML = result.map(essay => {
-        const date = essay.publishedAt
-          ? new Date(essay.publishedAt).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
-          : '';
-        const readTime = essay.readTime ? ` · ${essay.readTime} min read` : '';
-        const href = essay.externalUrl
-          ? essay.externalUrl
-          : `https://essay.angelsimcha.com/essays/${essay.slug}`;
-        const targetAttr = essay.externalUrl ? 'target="_blank" rel="noopener noreferrer"' : '';
-
-        return `
-          <div class="card animate-card essay-card">
-            <a href="${href}" ${targetAttr}>
-              <h3>${essay.title}${essay.externalUrl ? ' ↗' : ''}</h3>
-              <p class="meta">${date}${readTime}</p>
-              <p class="excerpt">${essay.excerpt || ''}</p>
-            </a>
-          </div>
-        `;
-      }).join('');
-
-      document.querySelectorAll('.animate-card').forEach(el => observer.observe(el));
-    })
-    .catch(() => {
-      document.getElementById('essay-list').innerHTML =
-        '<p style="color:#999;">Could not load essays.</p>';
-    });
-
-  // ── Pull letters from blog.angelsimcha.com ─────────────
-  fetch('https://blog.angelsimcha.com/api/get-letters')
-    .then(res => res.json())
-    .then(data => {
-      const container = document.getElementById('blog-list');
-      const broadcasts = data.broadcasts || [];
-
-      if (!broadcasts.length) {
-        container.innerHTML = '<p style="color:#999;">No letters published yet.</p>';
-        return;
-      }
-
-      // Show only the 3 most recent
-      container.innerHTML = broadcasts.slice(0, 3).map(b => {
-        const date = b.published_at || b.created_at
-          ? new Date(b.published_at || b.created_at).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
-          : '';
-        const title = b.subject || 'Untitled Letter';
-        const excerpt = stripHtml(b.description || b.content || '').slice(0, 120);
-        const url = `https://blog.angelsimcha.com/letter.html?id=${b.id}`;
-
-        return `
-          <div class="card animate-card blog-card">
-            <a href="${url}" target="_blank" rel="noopener noreferrer">
-              <h3>${escapeHtml(title)} ↗</h3>
-              <p class="meta">${date}</p>
-              ${excerpt ? `<p class="excerpt">${escapeHtml(excerpt)}…</p>` : ''}
-            </a>
-          </div>
-        `;
-      }).join('');
-
-      document.querySelectorAll('.animate-card').forEach(el => observer.observe(el));
-    })
-    .catch(() => {
-      document.getElementById('blog-list').innerHTML =
-        '<p style="color:#999;">Could not load letters.</p>';
-    });
-
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
   function stripHtml(html) {
-    const tmp = document.createElement('div');
+    var tmp = document.createElement('div');
     tmp.innerHTML = html;
     return tmp.textContent || tmp.innerText || '';
   }
-
-  function escapeHtml(str) {
-    return String(str)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;');
+  function fmtDate(d) {
+    return d ? new Date(d).toLocaleDateString('en-GB', { month: 'long', year: 'numeric' }) : '';
   }
-</script>
+  function safeUrl(u) {
+    return /^https?:\/\//i.test(u) ? u : '#';
+  }
 
+  // Essays from Sanity
+  var PROJECT_ID = 'ck8qyryn';
+  var QUERY = encodeURIComponent('*[_type == "essay"] | order(publishedAt desc) { title, "slug": slug.current, publishedAt, excerpt, readTime, externalUrl, category }');
+  fetch('https://' + PROJECT_ID + '.api.sanity.io/v2024-01-01/data/query/production?query=' + QUERY)
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+      var result = data.result;
+      var box = document.getElementById('essay-list');
+      if (!result || !result.length) { box.innerHTML = '<p class="muted">No essays published yet.</p>'; return; }
+      box.innerHTML = result.map(function (e, i) {
+        var read = e.readTime ? ' &middot; ' + esc(e.readTime) + ' min read' : '';
+        var href = e.externalUrl ? safeUrl(e.externalUrl) : 'https://essay.angelsimcha.com/essays/' + encodeURIComponent(e.slug);
+        var ext = e.externalUrl ? ' target="_blank" rel="noopener noreferrer"' : '';
+        return '<div class="card post-card reveal" style="--d:' + ((i % 4) * 60) + 'ms"><a href="' + esc(href) + '"' + ext + '>' +
+          '<h3>' + esc(e.title) + (e.externalUrl ? ' &#8599;' : '') + '</h3>' +
+          '<p class="meta">' + esc(fmtDate(e.publishedAt)) + read + '</p>' +
+          '<p class="excerpt">' + esc(e.excerpt) + '</p></a></div>';
+      }).join('');
+      window.observeReveals(box);
+    })
+    .catch(function () {
+      document.getElementById('essay-list').innerHTML = '<p class="muted">Could not load essays right now.</p>';
+    });
+
+  // Letters from blog.angelsimcha.com
+  fetch('https://blog.angelsimcha.com/api/get-letters')
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+      var box = document.getElementById('blog-list');
+      var list = data.broadcasts || [];
+      if (!list.length) { box.innerHTML = '<p class="muted">No letters published yet.</p>'; return; }
+      box.innerHTML = list.slice(0, 3).map(function (b, i) {
+        var title = b.subject || 'Untitled Letter';
+        var excerpt = stripHtml(b.description || b.content || '').slice(0, 120);
+        var url = 'https://blog.angelsimcha.com/letter.html?id=' + encodeURIComponent(b.id);
+        return '<div class="card post-card reveal" style="--d:' + (i * 60) + 'ms"><a href="' + esc(url) + '" target="_blank" rel="noopener noreferrer">' +
+          '<h3>' + esc(title) + ' &#8599;</h3>' +
+          '<p class="meta">' + esc(fmtDate(b.published_at || b.created_at)) + '</p>' +
+          (excerpt ? '<p class="excerpt">' + esc(excerpt) + '...</p>' : '') + '</a></div>';
+      }).join('');
+      window.observeReveals(box);
+    })
+    .catch(function () {
+      document.getElementById('blog-list').innerHTML = '<p class="muted">Could not load letters right now.</p>';
+    });
+</script>
 </body>
 </html>
