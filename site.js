@@ -12,8 +12,8 @@
     instagram: 'https://instagram.com/theangelsimcha',
     x: 'https://x.com/theangelsimcha',
     github: 'https://github.com/Chiagoziem-Angel',
-    linktree: 'https://linktr.ee/angelsimcha',
-    operatorsCorner: 'https://operatorscorner.com',
+    linktree: 'https://linktr.ee/angelnwafor',
+    operatorsCorner: 'https://youroperatorscorner.com',
     operatorsChannel: 'https://whatsapp.com/channel/0029Vb6EjozDp2Q3jPYFgu0X',
     store: 'https://selar.com/m/angelsimcha',
     bookstore: 'https://wa.me/c/2348165649262'
@@ -282,7 +282,10 @@
   function wireImageSlots() {
     document.querySelectorAll('img[data-fallback]').forEach(function (img) {
       // the error may already have fired before this script ran
+      var box = img.parentNode;
       if (img.complete && img.naturalWidth === 0) img.style.display = 'none';
+      else if (img.complete && img.naturalWidth > 0) box.classList.add('has-img');
+      img.addEventListener('load', function () { box.classList.add('has-img'); });
       img.addEventListener('error', function () { img.style.display = 'none'; });
     });
   }

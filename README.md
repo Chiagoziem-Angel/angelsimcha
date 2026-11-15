@@ -41,3 +41,12 @@ If an image file is missing, a coloured placeholder tile shows instead, so the s
 ## Contact form
 
 Submits to Formspree (`https://formspree.io/f/meevbank`) and redirects to `contact-success.html`.
+
+## Logos
+
+Drop logo files into `images/logos/` with these exact names (PNG, transparent background works best, at least 800px wide):
+`hammet.png`, `operators-corner.png`, `lace.png`.
+Until a file is added, the card shows the name as text, so nothing breaks.
+
+Also add these when you have them (each card falls back to a letter tile until then):
+`kingdom-pathways.png`, `daniel-nation.png`, `eliora.png` (square, about 256px or larger).
